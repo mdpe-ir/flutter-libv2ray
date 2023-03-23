@@ -89,7 +89,9 @@ class V2rayApi {
     const BasicMessageChannel<Object?> channel =
         BasicMessageChannel<Object?>('dev.flutter.pigeon.V2rayApi.status', StandardMessageCodec());
     
-    final Map<Object, Object>? replyMap = Map.from(await channel.send(null) as _Map<Object?, Object?>?);
+       final Map<Object, Object> replyMap = await channel.send(encoded) as Map<Object, Object>;
+
+
 
 
     if (replyMap == null) {
