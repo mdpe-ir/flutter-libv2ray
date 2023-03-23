@@ -88,7 +88,8 @@ class V2rayApi {
   Future<StatusReply> status() async {
     const BasicMessageChannel<Object?> channel =
         BasicMessageChannel<Object?>('dev.flutter.pigeon.V2rayApi.status', StandardMessageCodec());
-    final Map<Object, Object>? replyMap = await channel.send(null) as Map<Object, Object>?;
+    final Map<Object, Object>? replyMap = (await channel.send(null)).cast<Object, Object>();
+
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
