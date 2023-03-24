@@ -6,8 +6,8 @@ import 'message.dart';
 class Libv2ray {
   static const MethodChannel _channel = const MethodChannel('libv2ray');
 
-  static Future<String?> get platformVersion async {
-    final String? version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String> get platformVersion async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
@@ -23,7 +23,7 @@ class Libv2ray {
     await api.stop();
   }
 
-  static Future<int?> status() async {
+  static Future<int> status() async {
     V2rayApi api = V2rayApi();
     var replay = await api.status();
     return replay.status;
